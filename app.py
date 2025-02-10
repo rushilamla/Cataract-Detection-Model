@@ -1,3 +1,4 @@
+from flask_cors import CORS
 from flask import Flask, request, jsonify
 import numpy as np
 import joblib
@@ -10,7 +11,7 @@ scaler = joblib.load("scaler.pkl")
 
 # Flask app setup
 app = Flask(__name__)
-
+CORS(app)
 def preprocess_image(image):
     image = Image.open(io.BytesIO(image))
     image = image.convert("L")  # Convert to grayscale
