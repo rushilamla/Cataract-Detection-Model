@@ -19,6 +19,9 @@ def preprocess_image(image):
     image = image / 255.0  # Normalize pixel values
     image = scaler.transform([image])  # Standardize using trained scaler
     return image
+@app.route('/')
+def home():
+    return "Cataract Detection API is running! Use /predict to send images."
 
 @app.route('/predict', methods=['POST'])
 def predict():
